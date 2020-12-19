@@ -1,5 +1,5 @@
-import {createStackNavigator,NavigationStackOptions} from 'react-navigation-stack';
-import { createAppContainer,NavigationComponent} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+import { createAppContainer} from 'react-navigation';
 import main from '../screens/main';
 import result from '../screens/result'
 

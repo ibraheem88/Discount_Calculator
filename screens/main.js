@@ -14,18 +14,22 @@ export default function main ({navigation}) {
     const history={}
 
     const calculatePrice=()=>{
-      setfinalPrice(Math.round(price-((discount/100)*price)));
+      const fprice=Math.round(price-((discount/100)*price));
+      setfinalPrice(fprice);
     }
     const calculateSaved=() =>{
-      setSaved(Math.round((discount / 100) * price));
+      const mSaved=Math.round((discount / 100) * price);
+      setSaved(mSaved);
     }
     const totalPrice=(value) =>{
-      setDiscount(value);
+      const d=value;
+      setDiscount(d);
       calculatePrice();
       calculateSaved();
     }
     const totalSave=(value) =>{
-      setPrice(value);
+      const p=value;
+      setPrice(p);
       calculatePrice();
       calculateSaved();
     }
@@ -33,7 +37,9 @@ export default function main ({navigation}) {
       setItem([...item,{discount: discount,total: finalPrice,final: saved,key: Math.random().toString()}]);
     }
     const clearDiscount=(key) =>{
-      setItem(...item.filter(item => item.key!=key));
+      setItem((prevItem)=> {
+        return prevItem.filter(item => item.key !=key);
+      });
     }
     //const onClick=() =>{
     //  navigation.navigate('result',{finalprice: Math.round(price-((discount/100)*price)), saved: Math.round((discount/100)*price)});
@@ -46,7 +52,7 @@ export default function main ({navigation}) {
       <ImageBackground style={styles.container}  source={require("../assets/images/discount.jpg")}>
         <View style={styles.section}>
         <Text style={styles.text} >Enter Discount Percentage:</Text>
-        <TextInput style={styles.input}onChangeText={totalPrice} maxLength={3} keyboardType={'number-pad'}/>
+        <TextInput style={styles.input}onChangeText={totalPrice} maxLength={3}/>
         <Text style={styles.text}>Enter Total Price:</Text>
         <TextInput style={styles.input}onChangeText={totalSave} />
         <Text style={styles.text}>Final Price:</Text>

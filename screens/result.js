@@ -3,7 +3,7 @@ import { Text, View, StyleSheet ,ImageBackground,TouchableOpacity,ScrollView,Fla
 import main from '../screens/main';
 
 
-export default function result ({navigation,item,clearDiscount}) {
+export default function result ({navigation}) {
     
   
     return (
